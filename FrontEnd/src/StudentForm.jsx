@@ -31,7 +31,3 @@ export default class StudentForm extends React.Component{
         )
     }
 }
-
-//define a component namely Product
-//use this.state to control the following info: product name, product price, product description
-// and a list of stores that sell this product
