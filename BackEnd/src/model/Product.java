@@ -6,10 +6,6 @@ public abstract class Product {
     private int price;
 
 
-    public void setPrice(newprice){
-        price = newprice;
-    }
-    public int getPrice() {
-        return price;
-    }
+    public abstract void setPrice(int newprice);
+    public abstract int getPrice();
 }
