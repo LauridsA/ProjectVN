@@ -1,6 +1,11 @@
 import React from 'react'
 import logo from '../images/cropped-logo.png';
-import { Button, Navbar, NavDropdown, Nav, NavItem, MenuItem, Grid } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, NavItem, } from 'react-bootstrap'
+import { VISIBILITY_ABOUTUS, VISIBILITY_SHOPPINGCART,
+  ROUTE_BASE, ROUTE_ABOUTUS, ROUTE_ADMIN, ROUTE_SHOPPINGCART
+ } from '../components/Constants.jsx'
 
 export default class Header extends React.Component {
 
@@ -15,24 +20,39 @@ export default class Header extends React.Component {
       position: 'fixed',
       zIndex: 1,
       width: 100 + '%',
+      top: 0 + 'px'
     }
-    
+
     return (
       <div>
         <Navbar style={headerStyle}>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href='#'>
-                <img src={logo} style={logoStyle} />
-              </a>
+              <LinkContainer to={ROUTE_BASE} >
+                <a>
+                  <img src={logo} style={logoStyle} onClick={this.props.reset.bind(this)} />
+                </a>
+              </LinkContainer>
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
-            <NavItem eventKey={1} href="/about-us">About Us</NavItem>
-            <NavItem eventKey={2} href="/admin">Admin Mode</NavItem>
+            <LinkContainer to={ROUTE_ABOUTUS}>
+              <NavItem>
+                About Us
+            </NavItem>
+            </LinkContainer>
+            <LinkContainer to={ROUTE_ADMIN}>
+              <NavItem>
+                Admin Mode
+            </NavItem>
+            </LinkContainer>
           </Nav>
           <Nav pullRight>
-            <MenuItem eventKey={3}> Shopping Cart</MenuItem>
+            <LinkContainer to={ROUTE_SHOPPINGCART}>
+              <NavItem>
+                Shopping Cart
+            </NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar>
       </div>
