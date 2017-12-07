@@ -9,7 +9,9 @@ import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
 import LoginForm from '../user-site/components/LoginForm.jsx'
 import { connect } from 'react-redux'
-import { RESET, ROUTE_BASE, ROUTE_ABOUTUS, ROUTE_ADMIN, ROUTE_SHOPPINGCART, ROUTE_LOGIN } from '../components/Constants.jsx'
+import { RESET, ROUTE_BASE, ROUTE_ABOUTUS, 
+    ROUTE_ADMIN, ROUTE_SHOPPINGCART, ROUTE_LOGIN, EMPTY_CURRENTUSER 
+} from '../components/Constants.jsx'
 
 class Root extends React.Component {
 
@@ -36,7 +38,7 @@ class Root extends React.Component {
                         <Admin />
                     )} />
                     <Route exact path={ROUTE_LOGIN} render={() => (
-                        <LoginForm />
+                        <LoginForm /> //empty user logic impl. TODO
                     )} />
                     <Route exact path={ROUTE_SHOPPINGCART} render={() => (
                         <CheckoutPage
