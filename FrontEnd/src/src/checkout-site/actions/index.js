@@ -1,4 +1,4 @@
-import { DELETE_CART_ITEM, RESET_CART, UPDATE_QUANTITY, UPDATE_CART } from "../../components/Constants";
+import { DELETE_CART_ITEM, RESET_CART, UPDATE_QUANTITY } from "../../components/Constants.jsx";
 
 export const addCartAndReset = cart => {
     return dispatch => {
@@ -42,7 +42,6 @@ export const deleteCartItem = id => {
             method: 'DELETE'
         })
             .then(res=>res.json())
-            .then((data) => {store.dispatch({ type: DELETE_CART_ITEM, payload: data })
-            })
+            .then((data) => {store.dispatch({ type: DELETE_CART_ITEM, payload: data })})
     }
 }

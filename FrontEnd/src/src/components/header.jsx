@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem, } from 'react-bootstrap'
 import { VISIBILITY_ABOUTUS, VISIBILITY_SHOPPINGCART,
-  ROUTE_BASE, ROUTE_ABOUTUS, ROUTE_ADMIN, ROUTE_SHOPPINGCART
+  ROUTE_BASE, ROUTE_ABOUTUS, ROUTE_ADMIN, ROUTE_SHOPPINGCART, VISIBILITY_USER, ROUTE_LOGIN
  } from '../components/Constants.jsx'
 
 export default class Header extends React.Component {
@@ -36,15 +36,17 @@ export default class Header extends React.Component {
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
-            <LinkContainer to={ROUTE_ABOUTUS}>
-              <NavItem>
-                About Us
-            </NavItem>
-            </LinkContainer>
             <LinkContainer to={ROUTE_ADMIN}>
               <NavItem>
                 Admin Mode
             </NavItem>
+            </LinkContainer>
+          </Nav>
+          <Nav pullRight>
+            <LinkContainer to={ROUTE_LOGIN}>
+                <NavItem>
+                    Log In
+                </NavItem>
             </LinkContainer>
           </Nav>
           <Nav pullRight>

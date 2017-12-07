@@ -1,5 +1,5 @@
 /*
-* All kind of constants
+* All constants
 */
 
 // Product
@@ -16,7 +16,7 @@ export const FETCH_PRODUCTS_BY_PRICE_SUCCESS = 'FETCH_PRODUCTS_BY_PRICE_SUCCESS'
 export const SET_CURRENTPRODUCT = 'SET_CURRENTPRODUCT'
 export const EMPTY_CURRENTPRODUCT = 'EMPTY_CURRENTPRODUCT'
 
-// Categorie
+// Categories
 export const SHOW_CATEGORIES = 'SHOW_CATEGORIES'
 export const FETCH_PRODUCT_TYPES = 'FETCH_PRODUCT_TYPES'
 
@@ -24,8 +24,10 @@ export const FETCH_PRODUCT_TYPES = 'FETCH_PRODUCT_TYPES'
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const RESET_CART = 'RESET_CART'
 export const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
-export const UPDATE_CART = 'UPDATE_CART' //is this correct?
 export const DELETE_CART_ITEM = 'DELETE_CART_ITEM'
+
+// User
+export const EMPTY_CURRENTUSER = 'EMPTY_CURRENTUSER' // TODO
 
 // Filter
 export const SWITCH_VIEW = 'SWITCH_VIEW'
@@ -38,7 +40,7 @@ export const RANDOM = 'RANDOM'
 // Visibility
 export const VISIBILITY_ABOUTUS = 'VISIBILITY_ABOUTUS'
 export const VISIBILITY_SHOPPINGCART = 'VISIBILITY_SHOPPINGCART'
-
+export const VISIBILITY_USER = 'VISIBILITY_USER'
 export const RESET = 'RESET'
 
 // URLs
@@ -52,3 +54,4 @@ export const ROUTE_ABOUTUS = '/about-us'
 export const ROUTE_ADMIN = '/admin'
 export const ROUTE_SHOPPINGCART = '/shopping-cart'
 export const ROUTE_ = ''
+export const ROUTE_LOGIN  = '/login'
