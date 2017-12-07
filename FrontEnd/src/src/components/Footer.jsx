@@ -9,7 +9,7 @@ export default class Footer extends React.Component {
     render() {
         return(
             <div>
-                <Grid>
+                <Grid style={styles}>
                     <Row className="show-grid">
                         <Col xs={6} md={4}><code>{''}</code></Col>
                         <Col xs={6} md={4}><code>{
@@ -26,7 +26,7 @@ export default class Footer extends React.Component {
         return (
         <LinkContainer to={ROUTE_ABOUTUS}>
             <Panel>
-                <div style={styles}>
+                <div>
                     About Us
                 </div>
             </Panel>    
@@ -36,5 +36,8 @@ export default class Footer extends React.Component {
 
 const styles = {
     fontStyle: 'italic',
-    textAlign: 'center'
+    textAlign: 'center',
+    position: 'fixed',
+    bottom: 0 + 'px',
+    width: 100 + '%'
 };
