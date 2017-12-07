@@ -3,11 +3,10 @@ import App from './App.jsx'
 import AboutUs from '../components/AboutUs.jsx'
 import Admin from './Admin.jsx'
 import { Switch, Route, withRouter } from 'react-router-dom';
-// import ShoppingCartPage from '../containers/ShoppingCartPage.jsx'
-// import Checkout from '../components/Checkout.jsx'
 import CheckoutPage from '../checkout-site/components/CheckoutPage.jsx'
 import { addCartAndReset, deleteCartItem, updateQuantity } from '../checkout-site/actions'
 import Header from '../components/Header.jsx'
+import Footer from '../components/Footer.jsx'
 import { connect } from 'react-redux'
 import { RESET, ROUTE_BASE, ROUTE_ABOUTUS, ROUTE_ADMIN, ROUTE_SHOPPINGCART } from '../components/Constants.jsx'
 
@@ -46,17 +45,11 @@ class Root extends React.Component {
                         />
                     )}
                     />
-                    {/* <ShoppingCartPage
-                            myShoppingCart={this.props.shoppingcart}
-                            filter={this.props.filter}
-                            //handleSave = {this.props.addShoppingCart(cartitems)}
-
-                        />
-                    )} />
-                    <Route exact path='/checkout' render={() => (
-                        <Checkout/>
-                    )} /> */}
                 </Switch>
+
+                <div>
+                    <Footer />
+                </div>
             </div>
         )
     }

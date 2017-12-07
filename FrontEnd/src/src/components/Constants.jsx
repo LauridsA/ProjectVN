@@ -24,6 +24,7 @@ export const FETCH_PRODUCT_TYPES = 'FETCH_PRODUCT_TYPES'
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const RESET_CART = 'RESET_CART'
 export const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
+export const UPDATE_CART = 'UPDATE_CART' //is this correct?
 export const DELETE_CART_ITEM = 'DELETE_CART_ITEM'
 
 // Filter
