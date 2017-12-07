@@ -6,6 +6,7 @@ export default class LoginForm extends React.Component {
     constructor(props){
         super(props)
         this.handleChange = this.handleChange.bind(this)
+        this.handleAddUser = this.handleAddUser.bind(this)
         this.state = {
             fields: {
                 email: '',
@@ -13,6 +14,11 @@ export default class LoginForm extends React.Component {
             },
             errors: []
         }
+    }
+
+    handleAddUser(e){
+        //throw the fields at the DB
+        alert(Clicked)
     }
 
     handleChange(e){
@@ -69,7 +75,10 @@ export default class LoginForm extends React.Component {
                 <FormGroup>
                     <Col xs={6} md={2}><code>{''}</code></Col>
                     <Col smOffset={2} sm={4}>
-                        <Button type="submit">
+                        <Button 
+                        type="submit"
+                        onClick={this.handleAddUser}
+                        >
                             Sign in
                         </Button>
                     </Col>
