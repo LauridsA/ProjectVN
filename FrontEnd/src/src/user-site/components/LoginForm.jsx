@@ -2,6 +2,24 @@ import React from 'react'
 import { FormGroup, Col, Form, Checkbox, Button, ControlLabel, FormControl } from 'react-bootstrap'
 
 export default class LoginForm extends React.Component {
+    
+    constructor(props){
+        super(props)
+        this.handleChange = this.handleChange.bind(this)
+        this.state = {
+            fields: {
+                email: '',
+                password: ''
+            },
+            errors: []
+        }
+    }
+
+    handleChange(e){
+        var change = {}
+        change[e.target.name] = e.target.value
+        this.setState(change)
+    }
 
     render() {
         return(
@@ -12,7 +30,13 @@ export default class LoginForm extends React.Component {
                         Email
                     </Col>
                     <Col sm={4}>
-                        <FormControl type="email" placeholder="Email" />
+                        <FormControl 
+                        type="email" 
+                        value= {this.state.fields.email}
+                        placeholder="Email"
+                        name="email"
+                        onChange={this.handleChange}
+                        />
                     </Col>
                     <Col xs={6} md={2}><code>{''}</code></Col>
                 </FormGroup>
@@ -23,7 +47,13 @@ export default class LoginForm extends React.Component {
                         Password
                     </Col>
                     <Col sm={4}>
-                        <FormControl type="password" placeholder="Password" />
+                        <FormControl 
+                        type="password" 
+                        value= {this.state.fields.password}
+                        placeholder="Password"
+                        name="password"
+                        onChange={this.handleChange}
+                        />
                     </Col>
                     <Col xs={6} md={2}><code>{''}</code></Col>
                 </FormGroup>
@@ -52,5 +82,5 @@ export default class LoginForm extends React.Component {
 
 const formstyle = {
     position: 'relative',
-    marginTop: 200 + 'px'
+    marginTop: 80 + 'px'
 };
