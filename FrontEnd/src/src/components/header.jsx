@@ -9,6 +9,11 @@ import { VISIBILITY_ABOUTUS, VISIBILITY_SHOPPINGCART,
 
 export default class Header extends React.Component {
 
+  loggedIn(user){
+    if(user===null){
+      
+    }
+  }
 
   render() {
     const logoStyle = {

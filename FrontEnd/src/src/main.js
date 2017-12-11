@@ -11,7 +11,8 @@ import {
     FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_BY_ID_SUCCESS, FETCH_PRODUCTS_BY_PRICE_SUCCESS,
     SET_CURRENTPRODUCT, EMPTY_CURRENTPRODUCT, RESET_FILTER, RESET,
     RESET_CART, UPDATE_QUANTITY, DELETE_CART_ITEM, FETCH_PRODUCT_TYPES, RANDOM,
-    PRODUCTS, PRODUCT_TYPES, SHOPPING_CART
+    PRODUCTS, PRODUCT_TYPES, SHOPPING_CART, SET_CURRENTUSER, EMPTY_CURRENTUSER, 
+    FETCH_USER_DETAILS, ADD_USER, USERS
 } from './components/Constants.jsx'
 
 var initialState = {
@@ -25,7 +26,8 @@ var initialState = {
         minPrice: 0,
         maxPrice: 10000
     },
-    currentProduct: {}
+    currentProduct: {},
+    currentUser: {}
 }
 
 function products(state = [], action) {
@@ -144,13 +146,39 @@ function currentProduct(state = initialState.currentProduct, action) {
     return state;
 }
 
+function currentUser(state = initialState.currentUser, action) {
+    switch (action.type) {
+        case SET_CURRENTUSER:
+            return Object.assign({}, state, action.user)
+        case EMPTY_CURRENTUSER:
+            return Object.assign({}, {})
+    }
+    return state;
+}
+
+function users(state = [], action) {
+    switch (action.type) {
+        case FETCH_USER_DETAILS:
+            return [...action.user]
+        case ADD_USER:
+            return [...action.user]
+
+        default:
+            break;
+    }
+
+    return state;
+}
+
 
 const centralState = combineReducers({
     products,
     categories,
     shoppingCart,
     filter,
-    currentProduct
+    currentProduct,
+    currentUser,
+    users
 })
 
 
@@ -164,7 +192,7 @@ store.dispatch(fetchProductTypes())
 
 // Add the respective action in a reducer
 // Call store.dispatch(fetchStudent())
-function fetchProducts() {
+export function fetchProducts() {
     return function () {
         fetch(PRODUCTS)
             .then(function (res) {
@@ -179,7 +207,7 @@ function fetchProducts() {
     }
 }
 
-function fetchProductsByPrice(min, max) {
+export function fetchProductsByPrice(min, max) {
     return function () {
         fetch(PRODUCTS)
             .then(function (res) {
@@ -194,7 +222,7 @@ function fetchProductsByPrice(min, max) {
     }
 }
 
-function fetchProductsByTypeId(id) {
+export function fetchProductsByTypeId(id) {
     return function () {
         fetch(PRODUCTS)
             .then(function (res) {
@@ -209,7 +237,7 @@ function fetchProductsByTypeId(id) {
             })
     }
 }
-function fetchProductTypes() {
+export function fetchProductTypes() {
     return dispatch => {
         fetch(PRODUCT_TYPES)
             .then(response => response.json())
@@ -220,7 +248,7 @@ function fetchProductTypes() {
     }
 }
 
-function addShoppingCart(shoppingcart) {
+export function addShoppingCart(shoppingcart) {
     return function () {
         fetch(SHOPPING_CART, {
             headers: {
@@ -235,6 +263,40 @@ function addShoppingCart(shoppingcart) {
             })
             .then((data) => {
                 store.dispatch({ type: ADD_TO_CART, payload: data })
+            })
+    }
+}
+
+export function addUser(user) {
+    return function () {
+        fetch(USERS, {
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            method: 'post',
+            body: JSON.stringify(user)
+        })
+            .then((res) => {
+                return res.json()
+            })
+            .then((data) => {
+                store.dispatch({ type: ADD_USER, user: data })
+            })
+    }
+}
+
+export function fetchUserDetails(user) {
+    return function () {
+        fetch(USERS)
+            .then(function (res) {
+                return res.json()
+            })
+            .then(function (data) {
+                store.dispatch({
+                    type: FETCH_USER_DETAILS,
+                    user: data
+                })
             })
     }
 }

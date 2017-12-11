@@ -27,7 +27,10 @@ export const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
 export const DELETE_CART_ITEM = 'DELETE_CART_ITEM'
 
 // User
-export const EMPTY_CURRENTUSER = 'EMPTY_CURRENTUSER' // TODO
+export const EMPTY_CURRENTUSER = 'EMPTY_CURRENTUSER' 
+export const SET_CURRENTUSER = 'SET_CURRENTUSER'
+export const FETCH_USER_DETAILS = 'FETCH_USER_DETAILS'
+export const ADD_USER = 'ADD_USER'
 
 // Filter
 export const SWITCH_VIEW = 'SWITCH_VIEW'
@@ -47,6 +50,7 @@ export const RESET = 'RESET'
 export const PRODUCTS = 'http://bestlab.us:8080/products'
 export const PRODUCT_TYPES = 'http://bestlab.us:8080/productTypes'
 export const SHOPPING_CART = 'http://bestlab.us:8080/shoppingCarts'
+export const USERS = 'http://bestlab.us:8080/users'
 
 // Routing
 export const ROUTE_BASE = '/'

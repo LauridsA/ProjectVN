@@ -38,7 +38,7 @@ class Root extends React.Component {
                         <Admin />
                     )} />
                     <Route exact path={ROUTE_LOGIN} render={() => (
-                        <LoginForm /> //empty user logic impl. TODO
+                        <LoginForm />
                     )} />
                     <Route exact path={ROUTE_SHOPPINGCART} render={() => (
                         <CheckoutPage
