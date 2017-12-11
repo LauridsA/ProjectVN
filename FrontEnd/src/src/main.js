@@ -14,6 +14,8 @@ import {
     PRODUCTS, PRODUCT_TYPES, SHOPPING_CART, SET_CURRENTUSER, EMPTY_CURRENTUSER, 
     FETCH_USER_DETAILS, ADD_USER, USERS
 } from './components/Constants.jsx'
+import {fetchProducts, fetchProductsByPrice, fetchProductsByTypeId, fetchProductTypes, 
+    addShoppingCart, addUser, fetchUserDetails} from '../src/actions.jsx'
 
 var initialState = {
     shoppingcart: {
@@ -186,120 +188,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(centralState, /* preloadedState, */ composeEnhancers(
     applyMiddleware(thunk)
 ));
-
+export default store;
 store.dispatch(fetchProducts())
 store.dispatch(fetchProductTypes())
-
-// Add the respective action in a reducer
-// Call store.dispatch(fetchStudent())
-export function fetchProducts() {
-    return function () {
-        fetch(PRODUCTS)
-            .then(function (res) {
-                return res.json()
-            })
-            .then(function (data) {
-                store.dispatch({
-                    type: FETCH_PRODUCTS_SUCCESS,
-                    payload: data
-                })
-            })
-    }
-}
-
-export function fetchProductsByPrice(min, max) {
-    return function () {
-        fetch(PRODUCTS)
-            .then(function (res) {
-                return res.json()
-            })
-            .then(function (data) {
-                store.dispatch({
-                    type: FETCH_PRODUCTS_BY_PRICE_SUCCESS,
-                    payload: [data, min, max]
-                })
-            })
-    }
-}
-
-export function fetchProductsByTypeId(id) {
-    return function () {
-        fetch(PRODUCTS)
-            .then(function (res) {
-                return res.json()
-            })
-            .then(function (data) {
-                store.dispatch({
-                    type: FETCH_PRODUCTS_BY_ID_SUCCESS,
-                    products: data,
-                    typeId: id
-                })
-            })
-    }
-}
-export function fetchProductTypes() {
-    return dispatch => {
-        fetch(PRODUCT_TYPES)
-            .then(response => response.json())
-            .then(data => dispatch({
-                type: FETCH_PRODUCT_TYPES,
-                data
-            }))
-    }
-}
-
-export function addShoppingCart(shoppingcart) {
-    return function () {
-        fetch(SHOPPING_CART, {
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            method: 'post',
-            body: JSON.stringify(shoppingcart)
-        })
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                store.dispatch({ type: ADD_TO_CART, payload: data })
-            })
-    }
-}
-
-export function addUser(user) {
-    return function () {
-        fetch(USERS, {
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            method: 'post',
-            body: JSON.stringify(user)
-        })
-            .then((res) => {
-                return res.json()
-            })
-            .then((data) => {
-                store.dispatch({ type: ADD_USER, user: data })
-            })
-    }
-}
-
-export function fetchUserDetails(user) {
-    return function () {
-        fetch(USERS)
-            .then(function (res) {
-                return res.json()
-            })
-            .then(function (data) {
-                store.dispatch({
-                    type: FETCH_USER_DETAILS,
-                    user: data
-                })
-            })
-    }
-}
 
 ReactDOM.render(
     <Provider store={store}>

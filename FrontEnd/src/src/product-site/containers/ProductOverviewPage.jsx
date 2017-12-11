@@ -1,8 +1,8 @@
 import React from 'react'
-import Filter from '../components/Filter.jsx'
+import Filter from '../../components/Filter.jsx'
 import Product from '../components/Product.jsx'
 import { Grid, Row, Col, ListGroup } from 'react-bootstrap'
-import { VIEW_PRODUCT_GRID, VIEW_PRODUCT_LIST } from '../components/Constants.jsx'
+import { VIEW_PRODUCT_GRID, VIEW_PRODUCT_LIST } from '../../components/Constants.jsx'
 
 export default class ProductOverviewPage extends React.Component {
 

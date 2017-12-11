@@ -1,17 +1,18 @@
 import React from 'react'
 import App from './App.jsx'
-import AboutUs from '../components/AboutUs.jsx'
+import AboutUs from '../HeadersFooters/AboutUs.jsx'
 import Admin from './Admin.jsx'
 import { Switch, Route, withRouter } from 'react-router-dom';
 import CheckoutPage from '../checkout-site/components/CheckoutPage.jsx'
 import { addCartAndReset, deleteCartItem, updateQuantity } from '../checkout-site/actions'
-import Header from '../components/Header.jsx'
-import Footer from '../components/Footer.jsx'
+import Header from '../HeadersFooters/Header.jsx'
+import Footer from '../HeadersFooters/Footer.jsx'
 import LoginForm from '../user-site/components/LoginForm.jsx'
 import { connect } from 'react-redux'
 import { RESET, ROUTE_BASE, ROUTE_ABOUTUS, 
-    ROUTE_ADMIN, ROUTE_SHOPPINGCART, ROUTE_LOGIN, EMPTY_CURRENTUSER 
+    ROUTE_ADMIN, ROUTE_SHOPPINGCART, ROUTE_LOGIN, EMPTY_CURRENTUSER, ROUTE_USER_DETAILS 
 } from '../components/Constants.jsx'
+import UserDetailsContainer from '../user-site/containers/UserDetailsContainer.jsx'
 
 class Root extends React.Component {
 
@@ -19,7 +20,10 @@ class Root extends React.Component {
         return (
             <div>
                 <div>
-                    <Header reset={() => this.props.dispatch({ type: RESET })} />
+                    <Header 
+                    reset={() => this.props.dispatch({ type: RESET })} 
+                    currentUser = {this.props.currentUser}
+                    />
                 </div>
 
                 <Switch>
@@ -31,26 +35,17 @@ class Root extends React.Component {
                             currentProduct={this.props.currentProduct}
                         />
                     )} />
-                    <Route exact path={ROUTE_ABOUTUS} render={() => (
-                        <AboutUs />
-                    )} />
-                    <Route exact path={ROUTE_ADMIN} render={() => (
-                        <Admin />
-                    )} />
                     <Route exact path={ROUTE_LOGIN} render={() => (
                         <LoginForm />
                     )} />
-                    <Route exact path={ROUTE_SHOPPINGCART} render={() => (
-                        <CheckoutPage
-                            cartItems={this.props.shoppingcart}
-                            handleAddCartAndReset={cart => this.props.dispatch(addCartAndReset(cart))}
-                            handleDeleteCartItem={id => {
-                                this.props.dispatch(deleteCartItem(id))
-                            }}
-                            handleUpdateQuantity={update => this.props.dispatch(updateQuantity(update))}
+                    <Route exact path={ROUTE_ABOUTUS} render={() => (
+                        <AboutUs />
+                    )} />
+                    <Route exact path={ROUTE_USER_DETAILS} render={() => (
+                        <UserDetailsContainer 
+                        currentUser={this.props.user}
                         />
-                    )}
-                    />
+                    )} />
                 </Switch>
 
                 <div>
@@ -66,7 +61,9 @@ function mapStateToProps(centralState) {
         categories: centralState.categories,
         shoppingcart: centralState.shoppingCart,
         filter: centralState.filter,
-        currentProduct: centralState.currentProduct
+        currentProduct: centralState.currentProduct,
+        currentUser: centralState.currentUser,
+        user: centralState.user
     }
 }
 export default withRouter(connect(mapStateToProps)(Root))

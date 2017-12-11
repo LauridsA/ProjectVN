@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactTooltip from 'react-tooltip'
-import logo from '../images/cropped-logo.png';
-import cross from '../images/cross.jpg';
+import logo from '../../images/cropped-logo.png';
+import cross from '../../images/cross.jpg';
 import { Panel, Image, ListGroupItem, Button } from 'react-bootstrap'
-import { VIEW_PRODUCT_DETAILS, VIEW_PRODUCT_EDIT, VIEW_PRODUCT_LIST, VIEW_PRODUCT_GRID } from '../components/Constants.jsx'
+import { VIEW_PRODUCT_DETAILS, VIEW_PRODUCT_EDIT, VIEW_PRODUCT_LIST, VIEW_PRODUCT_GRID } from '../../components/Constants.jsx'
 
 export default class Product extends React.Component {
 

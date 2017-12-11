@@ -1,6 +1,6 @@
 import React from 'react'
 import Product from '../components/Product.jsx'
-import { VIEW_PRODUCT_DETAILS } from '../components/Constants.jsx'
+import { VIEW_PRODUCT_DETAILS } from '../../components/Constants.jsx'
 
 export default class ProductDetailPage extends React.Component {
 

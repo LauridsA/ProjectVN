@@ -4,14 +4,30 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem, } from 'react-bootstrap'
 import { VISIBILITY_ABOUTUS, VISIBILITY_SHOPPINGCART,
-  ROUTE_BASE, ROUTE_ABOUTUS, ROUTE_ADMIN, ROUTE_SHOPPINGCART, VISIBILITY_USER, ROUTE_LOGIN
+  ROUTE_BASE, ROUTE_ABOUTUS, ROUTE_ADMIN, ROUTE_SHOPPINGCART, VISIBILITY_USER, ROUTE_LOGIN, ROUTE_USER_DETAILS
  } from '../components/Constants.jsx'
 
 export default class Header extends React.Component {
 
-  loggedIn(user){
-    if(user===null){
-      
+  constructor(props) {
+    super(props)
+    this.loggedInRoute.bind(this)
+    this.loggedInText.bind(this)
+}
+
+  loggedInRoute(){
+    if(Object.keys(this.props.currentUser).length === 0){
+      return ROUTE_LOGIN
+    } else{
+      return ROUTE_USER_DETAILS
+    }
+  }
+
+  loggedInText(){
+    if(Object.keys(this.props.currentUser).length === 0){
+      return 'Log In'
+    } else{
+      return 'Profile'
     }
   }
 
@@ -40,6 +56,29 @@ export default class Header extends React.Component {
               </LinkContainer>
             </Navbar.Brand>
           </Navbar.Header>
+          <Nav pullRight>
+            <LinkContainer to={this.loggedInRoute()}>
+                <NavItem>
+                    {this.loggedInText()}
+                </NavItem>
+            </LinkContainer>
+          </Nav> 
+          
+        </Navbar>
+      </div>
+    )
+  }
+}
+
+/**
+ * <Nav pullRight>
+            <LinkContainer to={ROUTE_SHOPPINGCART}>
+              <NavItem>
+                Shopping Cart
+            </NavItem>
+            </LinkContainer>
+          </Nav>
+
           <Nav>
             <LinkContainer to={ROUTE_ADMIN}>
               <NavItem>
@@ -47,22 +86,4 @@ export default class Header extends React.Component {
             </NavItem>
             </LinkContainer>
           </Nav>
-          <Nav pullRight>
-            <LinkContainer to={ROUTE_LOGIN}>
-                <NavItem>
-                    Log In
-                </NavItem>
-            </LinkContainer>
-          </Nav>
-          <Nav pullRight>
-            <LinkContainer to={ROUTE_SHOPPINGCART}>
-              <NavItem>
-                Shopping Cart
-            </NavItem>
-            </LinkContainer>
-          </Nav>
-        </Navbar>
-      </div>
-    )
-  }
-}
+ */

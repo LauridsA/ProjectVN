@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ProductOverviewPage from './ProductOverviewPage.jsx'
-import ProductDetailPage from './ProductDetailPage.jsx'
+import ProductOverviewPage from '../product-site/containers/ProductOverviewPage.jsx'
+import ProductDetailPage from '../product-site/containers/ProductDetailPage.jsx'
 import {
   SWITCH_VIEW, SET_SORTBY, SORTBY_PRICE, ADD_TO_CART, SET_CURRENTPRODUCT, EMPTY_CURRENTPRODUCT, RESET_FILTER
 } from '../components/Constants.jsx'
