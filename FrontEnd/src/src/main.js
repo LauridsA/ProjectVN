@@ -192,7 +192,7 @@ const centralState = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(centralState, /* preloadedState, */ composeEnhancers(
-    applyMiddleware(thunk)
+    applyMiddleware(thunk),
 ));
 export default store;
 store.dispatch(fetchProducts())

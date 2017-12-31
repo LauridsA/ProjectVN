@@ -51,7 +51,7 @@ export default class Header extends React.Component {
             <Navbar.Brand>
               <LinkContainer to={ROUTE_BASE} >
                 <a>
-                  <img src={logo} style={logoStyle} onClick={this.props.reset.bind(this)} />
+                  <img src={logo} style={logoStyle}/>
                 </a>
               </LinkContainer>
             </Navbar.Brand>

@@ -20,8 +20,7 @@ class Root extends React.Component {
         return (
             <div>
                 <div>
-                    <Header 
-                    reset={() => this.props.dispatch({ type: RESET })} 
+                    <Header  
                     currentUser = {this.props.currentUser}
                     />
                 </div>
@@ -37,7 +36,8 @@ class Root extends React.Component {
                     )} />
                     <Route exact path={ROUTE_LOGIN} render={() => (
                         <LoginForm 
-                            handleLogin={(u) => this.props.dispatch({type: SET_CURRENTUSER, payload: u})}
+                            currentUser = {this.props.currentUser}
+                            handleLogin = {(u) => this.props.dispatch({type: SET_CURRENTUSER, payload: u})}
                         />
                     )} />
                     <Route exact path={ROUTE_ABOUTUS} render={() => (
@@ -46,6 +46,7 @@ class Root extends React.Component {
                     <Route exact path={ROUTE_USER_DETAILS} render={() => (
                         <UserDetailsContainer 
                         currentUser={this.props.user}
+                        handleLogout = {() => this.props.dispatch({type: EMPTY_CURRENTUSER})}
                         />
                     )} />
                 </Switch>

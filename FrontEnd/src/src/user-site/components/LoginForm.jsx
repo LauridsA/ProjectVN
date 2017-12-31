@@ -9,11 +9,9 @@ export default class LoginForm extends React.Component {
             email: '',
             password: ''
         }
-        this.handleLogin = this.handleLogin.bind(this, this.state)
     }
 
     handleLogin(e){
-        console.log(this.state)
         this.props.handleLogin(this.state)
     }
 
@@ -25,7 +23,7 @@ export default class LoginForm extends React.Component {
 
     render() {
         return(
-            <Form horizontal style = {formstyle} onSubmit={this.handleLogin}>
+            <Form horizontal style = {formstyle} >
                 <FormGroup controlId="formHorizontalEmail">
                     <Col xs={6} md={2}><code>{''}</code></Col>
                     <Col componentClass={ControlLabel} sm={2}>
@@ -72,7 +70,7 @@ export default class LoginForm extends React.Component {
                     <Col xs={6} md={2}><code>{''}</code></Col>
                     <Col smOffset={2} sm={4}>
                         <Button 
-                        type="submit"
+                        type="button" onClick={this.handleLogin.bind(this)}
                         >
                             Sign in
                         </Button>
