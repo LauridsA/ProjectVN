@@ -86,7 +86,7 @@ export function addShoppingCart(shoppingcart) {
 
 export function addUser(user) {
     return function () {
-        fetch(USERS, {
+        fetch(USERS+user.id, {
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ export function addUser(user) {
 
 export function fetchUserDetails(user) {
     return function () {
-        fetch(USERS)
+        fetch(USERS+user.id)
             .then(function (res) {
                 return res.json()
             })
@@ -129,6 +129,6 @@ export const fetchUser = id => {
             body: JSON.stringify(id)
         })
         .then(response => response.json())
-        .then(id => dispatch({type: GET_USER, id})) //might need to be user
+        .then(id => dispatch({type: GET_USER, id})) //might need to be user already defined above ?????
     }
 }

@@ -151,10 +151,16 @@ function currentProduct(state = initialState.currentProduct, action) {
 function currentUser(state = initialState.currentUser, action) {
     switch (action.type) {
         case SET_CURRENTUSER:
-            return Object.assign({}, state, action.user)
+        console.log(action)
+        console.log(action.payload)
+            return Object.assign({}, state, action.payload)
         case EMPTY_CURRENTUSER:
+        console.log('emptying')
+        console.log(state)
             return Object.assign({}, {})
     }
+    console.log('doing nothing')
+    console.log(state)
     return state;
 }
 

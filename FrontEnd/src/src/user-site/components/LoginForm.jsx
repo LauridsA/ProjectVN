@@ -5,20 +5,16 @@ export default class LoginForm extends React.Component {
     
     constructor(props){
         super(props)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleAddUser = this.handleAddUser.bind(this)
         this.state = {
-            fields: {
-                email: '',
-                password: ''
-            },
-            errors: []
+            email: '',
+            password: ''
         }
+        this.handleLogin = this.handleLogin.bind(this, this.state)
     }
 
-    handleAddUser(e){
-        //throw the fields at the DB
-        alert(Clicked)
+    handleLogin(e){
+        console.log(this.state)
+        this.props.handleLogin(this.state)
     }
 
     handleChange(e){
@@ -29,7 +25,7 @@ export default class LoginForm extends React.Component {
 
     render() {
         return(
-            <Form horizontal style = {formstyle}>
+            <Form horizontal style = {formstyle} onSubmit={this.handleLogin}>
                 <FormGroup controlId="formHorizontalEmail">
                     <Col xs={6} md={2}><code>{''}</code></Col>
                     <Col componentClass={ControlLabel} sm={2}>
@@ -37,11 +33,11 @@ export default class LoginForm extends React.Component {
                     </Col>
                     <Col sm={4}>
                         <FormControl 
-                        type="email" 
-                        value= {this.state.fields.email}
-                        placeholder="Email"
-                        name="email"
-                        onChange={this.handleChange}
+                            type="text" 
+                            value= {this.state.email}
+                            placeholder="Email"
+                            name="email"
+                            onChange={this.handleChange.bind(this)}
                         />
                     </Col>
                     <Col xs={6} md={2}><code>{''}</code></Col>
@@ -54,11 +50,11 @@ export default class LoginForm extends React.Component {
                     </Col>
                     <Col sm={4}>
                         <FormControl 
-                        type="password" 
-                        value= {this.state.fields.password}
+                        type="text" 
+                        value= {this.state.password}
                         placeholder="Password"
                         name="password"
-                        onChange={this.handleChange}
+                        onChange={this.handleChange.bind(this)}
                         />
                     </Col>
                     <Col xs={6} md={2}><code>{''}</code></Col>
@@ -77,7 +73,6 @@ export default class LoginForm extends React.Component {
                     <Col smOffset={2} sm={4}>
                         <Button 
                         type="submit"
-                        onClick={this.handleAddUser}
                         >
                             Sign in
                         </Button>

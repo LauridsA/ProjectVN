@@ -10,7 +10,7 @@ import Footer from '../HeadersFooters/Footer.jsx'
 import LoginForm from '../user-site/components/LoginForm.jsx'
 import { connect } from 'react-redux'
 import { RESET, ROUTE_BASE, ROUTE_ABOUTUS, 
-    ROUTE_ADMIN, ROUTE_SHOPPINGCART, ROUTE_LOGIN, EMPTY_CURRENTUSER, ROUTE_USER_DETAILS 
+    ROUTE_ADMIN, ROUTE_SHOPPINGCART, ROUTE_LOGIN, EMPTY_CURRENTUSER, ROUTE_USER_DETAILS, SET_CURRENTUSER 
 } from '../components/Constants.jsx'
 import UserDetailsContainer from '../user-site/containers/UserDetailsContainer.jsx'
 
@@ -36,7 +36,9 @@ class Root extends React.Component {
                         />
                     )} />
                     <Route exact path={ROUTE_LOGIN} render={() => (
-                        <LoginForm />
+                        <LoginForm 
+                            handleLogin={(u) => this.props.dispatch({type: SET_CURRENTUSER, payload: u})}
+                        />
                     )} />
                     <Route exact path={ROUTE_ABOUTUS} render={() => (
                         <AboutUs />
