@@ -1,10 +1,7 @@
 import React from 'react'
 import App from './App.jsx'
 import AboutUs from '../HeadersFooters/AboutUs.jsx'
-import Admin from './Admin.jsx'
 import { Switch, Route, withRouter } from 'react-router-dom';
-import CheckoutPage from '../checkout-site/components/CheckoutPage.jsx'
-import { addCartAndReset, deleteCartItem, updateQuantity } from '../checkout-site/actions'
 import Header from '../HeadersFooters/Header.jsx'
 import Footer from '../HeadersFooters/Footer.jsx'
 import LoginForm from '../user-site/components/LoginForm.jsx'
